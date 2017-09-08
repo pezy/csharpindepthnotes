@@ -10,7 +10,7 @@ namespace csharpindepth
     {
         static void Main(string[] args)
         {
-            foreach (var p in Product.GetSampleProducts())
+            foreach (var p in Product.SampleProducts)
             {
                 Console.WriteLine(p.ToString());
             }

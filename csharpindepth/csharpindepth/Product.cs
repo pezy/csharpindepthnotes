@@ -1,33 +1,29 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace csharpindepth
 {
     public class Product
     {
-        public string Name { get; private set; }
-        public decimal Price { get; private set; }
+        readonly string name;
+        public string Name { get { return name; } }
 
-        Product() { }
+        readonly decimal price;
+        public decimal Price { get { return price; } }
 
-        public static List<Product> GetSampleProducts()
+        public Product(string name, decimal price)
         {
-            return new List<Product>
-            {
-                new Product { Name = "West Side Story", Price  = 9.99m },
-                new Product { Name = "Assassins", Price = 14.99m },
-                new Product { Name = "Forgs", Price = 13.99m },
-                new Product { Name = "Sweeney Todd", Price = 10.99m }
-            };
+            this.name = name;
+            this.price = price;
         }
 
-        public override string ToString()
+        public static List<Product> SampleProducts => new List<Product>
         {
-            return string.Format("{0}: {1}", Name, Price);
-        }
+            new Product(name : "West Side Story", price : 9.99m),
+            new Product(name : "Assassins", price : 14.99m),
+            new Product(name : "Forgs", price : 13.99m),
+            new Product(name : "Sweeney Todd", price : 10.99m)
+        };
+
+        public override string ToString() => string.Format("{0}: {1}", Name, Price);
     }
 }
