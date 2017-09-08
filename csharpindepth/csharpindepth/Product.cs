@@ -9,28 +9,33 @@ namespace csharpindepth
 {
     public class Product
     {
-        // !!! You've provided public getter properties, which means that if you wanted matching setters, they'd have to be public, too.
-
         string name;
-        public string Name { get { return name; } }
+        public string Name
+        {
+            get { return name; }
+            private set { name = value; }
+        }
 
         decimal price;
-        public decimal Price { get { return price; } }
+        public decimal Price
+        {
+            get { return price; }
+            private set { price = value; }
+        }
 
         public Product(string name, decimal price)
         {
-            this.name = name;
-            this.price = price;
+            Name = name;
+            Price = price;
         }
 
-        public static ArrayList GetSampleProducts()
+        public static List<Product> GetSampleProducts()
         {
-            ArrayList list = new ArrayList();
+            List<Product> list = new List<Product>();
             list.Add(new Product("West Side Story", 9.99m));
             list.Add(new Product("Assassins", 14.99m));
             list.Add(new Product("Forgs", 13.99m));
             list.Add(new Product("Sweeney Todd", 10.99m));
-            list.Add("error things!"); // !!! An ArrayList has no comile-time information about what's in it.
             return list;
         }
 
